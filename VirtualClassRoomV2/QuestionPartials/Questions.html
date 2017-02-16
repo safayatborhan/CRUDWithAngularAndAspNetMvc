@@ -1,0 +1,51 @@
+﻿
+<h2 class="text-center">Questions</h2>
+{{message}}
+
+<br />
+Rows to display:
+<select ng-model="rowToDisplay">
+    <option value="2">2</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="10">100</option>
+</select>
+<br /><br />
+
+<a href="/#/addQuestion" class="btn btn-primary">Add Question</a>
+<br />
+<br />
+<div class="col-md-12">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th ng-click="sortData('Vote')">
+                    Votes
+                    <div ng-class="getSortClass('Vote')"></div>
+                </th>
+                <th ng-click="sortData('Answer1')">
+                    Answers
+                    <div ng-class="getSortClass('Answer1')"></div>
+                </th>
+                <th ng-click="sortData('View')">
+                    View
+                    <div ng-class="getSortClass('View')"></div>
+                </th>
+                <th ng-click="sortData('Title')">
+                    Questions
+                    <div ng-class="getSortClass('Title')"></div>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tr ng-repeat="question in listOfQuestion | limitTo : rowToDisplay | orderBy : '-Date' : reverseSort ">
+            <td>{{question.Vote}}</td>
+            <td>{{question.Answer1}}</td>
+            <td>{{question.View}}</td>
+            <td>{{question.Title}}</td>
+            <td><a href="#/editQuestion/{{question.ID}}">Edit</a></td>
+            <td><a href="#/deleteQuestion" ng-click="deleteQuestion(question.ID)">Delete</a></td>
+        </tr>
+    </table>
+</div>
