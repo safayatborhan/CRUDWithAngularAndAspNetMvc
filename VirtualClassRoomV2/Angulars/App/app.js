@@ -2,6 +2,10 @@
 
 var app = angular.module("QuestionApp", ["QuestionApp.controllers", "ngRoute"]);
 
+//app.config(['$locationProvider', function ($locationProvider) {
+//    $locationProvider.hashPrefix('');
+//}]);
+
 app.config(["$routeProvider", function ($routeProvider, $locationProvider) {
     $routeProvider        
         .when("/", { templateUrl: "QuestionPartials/Questions.html", controller: "QuestionController" })

@@ -4,10 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @*for loading progressbar in ngProgress*@
+    <link href="~/Content/nprogress.css" rel="stylesheet" />
+    <script src="~/Scripts/nprogress.js"></script>
+
     @Styles.Render("~/Content/css")
     <link href="~/Content/CustomCSS.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Angulars/angular.js"></script>
+
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

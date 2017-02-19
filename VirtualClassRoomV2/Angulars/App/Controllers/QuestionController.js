@@ -29,7 +29,8 @@ angular.module("QuestionApp.controllers", [])
     })
 
     $scope.addQuestionToDB = function () {
-        QuestionService.addQuestionToDB($scope.Question);   //This is why, we used Question.title and so on in AddQuestion.html
+        NProgress.start();
+        QuestionService.addQuestionToDB($scope.Question);   //This is why, we used Question.title and so on in AddQuestion.html        
     }
 
     $scope.deleteQuestion = function (id) {
@@ -55,9 +56,10 @@ angular.module("QuestionApp.controllers", [])
 
     fac.addQuestionToDB = function (question) {
         return $http.post("/Home/AddQuestion", question).success(function (response) {
-            alert(response.status);
+            //alert(response.status);
             document.getElementById("title").value = "";
             document.getElementById("question").value = "";
+            NProgress.done();
         });
     }
 

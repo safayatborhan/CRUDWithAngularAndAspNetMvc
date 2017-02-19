@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using VirtualClassRoomV2.Models;
@@ -25,6 +26,7 @@ namespace VirtualClassRoomV2.Controllers
         [Authorize]
         public JsonResult AddQuestion(Question question)
         {
+            Thread.Sleep(20000);
             question.Date = DateTime.Parse(DateTime.Now.ToShortTimeString());
             db.QuestionDB.Add(question);
             db.SaveChanges();
