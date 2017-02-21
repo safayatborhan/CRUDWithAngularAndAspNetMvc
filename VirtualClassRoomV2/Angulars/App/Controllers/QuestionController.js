@@ -1,7 +1,7 @@
 ﻿
 
 angular.module("QuestionApp.controllers", [])
-.controller("QuestionController", function ($scope, QuestionService, $routeParams) {
+.controller("QuestionController", function ($scope, QuestionService, $routeParams, $location, $window) {
     $scope.message = "Message from question controller";
 
     $scope.rowToDisplay = 10;
@@ -30,7 +30,10 @@ angular.module("QuestionApp.controllers", [])
 
     $scope.addQuestionToDB = function () {
         NProgress.start();
-        QuestionService.addQuestionToDB($scope.Question);   //This is why, we used Question.title and so on in AddQuestion.html        
+        QuestionService.addQuestionToDB($scope.Question);   //This is why, we used Question.title and so on in AddQuestion.html   
+        $location.path('/');
+        //$window.location.href = '/';
+
     }
 
     $scope.deleteQuestion = function (id) {
@@ -47,7 +50,7 @@ angular.module("QuestionApp.controllers", [])
         QuestionService.updateQuestionToDB($scope.Question);
     }
 })
-.factory("QuestionService", ["$http", function ($http, $route) {
+.factory("QuestionService", ["$http", function ($http, $route, $location) {
     var fac = {};
 
     fac.getQuestionFromDB = function () {
@@ -57,9 +60,11 @@ angular.module("QuestionApp.controllers", [])
     fac.addQuestionToDB = function (question) {
         return $http.post("/Home/AddQuestion", question).success(function (response) {
             //alert(response.status);
-            document.getElementById("title").value = "";
-            document.getElementById("question").value = "";
+            //document.getElementById("title").value = "";
+            //document.getElementById("question").value = "";
             NProgress.done();
+            //$location.path('/');
+            //window.location.href = '/';
         });
     }
 

@@ -19,3 +19,8 @@
     border-top: 10px solid black;
     display: inline-block;
 }
+
+.mouseHide
+{
+    pointer-events:none;
+}

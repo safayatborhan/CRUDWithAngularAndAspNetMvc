@@ -1,4 +1,4 @@
-﻿<div class="col-md-4">
+﻿<div class="col-md-4" ng-style="myStyle">
     <form name="AddQuestionForm" ng-submit="addQuestionToDB();" class="form-group">
         <!--addQuestionToDB- this is the function name which is in the QuestionController.js-->
         <div class="form-group">
@@ -10,7 +10,7 @@
             <input type="text" id="question" class="form-control" ng-model="Question.Questions" required />
         </div>
         <div class="form-group">
-            <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="AddQuestionForm.$invalid" ng-click="removeText()" />
+            <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="AddQuestionForm.$invalid" ng-click="myStyle={'pointer-events':'none'}" />
         </div>
     </form>
     <br />

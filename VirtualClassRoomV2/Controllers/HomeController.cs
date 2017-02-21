@@ -26,7 +26,7 @@ namespace VirtualClassRoomV2.Controllers
         [Authorize]
         public JsonResult AddQuestion(Question question)
         {
-            Thread.Sleep(20000);
+            //Thread.Sleep(5000);
             question.Date = DateTime.Parse(DateTime.Now.ToShortTimeString());
             db.QuestionDB.Add(question);
             db.SaveChanges();
